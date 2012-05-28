@@ -1,4 +1,6 @@
 <?php
+if (!defined('CURRENT_PATH'))
+	return;
 # Defines various data for the converter script
 define('SMART_SCRIPT_TYPE_CREATURE',          0);
 define('SMART_SCRIPT_TYPE_GAMEOBJECT',        1);

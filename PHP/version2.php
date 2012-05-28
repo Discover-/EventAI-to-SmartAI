@@ -13,13 +13,9 @@ echo "                                 C O R E  /\\___/" . PHP_EOL;
 echo "http://TrinityCore.org                    \\/__/\n" . PHP_EOL;
 ob_end_flush();
 
-$host = 'localhost';
-$dbName = '335_world';
-$username = 'root';
-$password = '';
-$withDate = false; // Append date to filename ?
-
-require_once('./utils.php');
+define('CURRENT_PATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
+require_once(CURRENT_PATH.'config.php');
+require_once(CURRENT_PATH.'utils.php');
 
 try {
     $pdoOptions[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
@@ -42,8 +38,8 @@ echo PHP_EOL . 'Grouping entries by NPC ...' . PHP_EOL;
 ob_end_flush();
 
 # Create files
-$sqlOutputSAIs = fopen('./eai2sai' . ($withDate ? '-' . date() : '')  . '.sql', 'a');
-$textsOutput   = fopen('./eai2saiTexts' . ($withDate ? '-' . date() : '')  . '.sql', 'a');
+$sqlOutputSAIs = fopen('eai2sai' . ($withDate ? '-' . date() : '')  . '.sql', 'a');
+$textsOutput   = fopen('eai2saiTexts' . ($withDate ? '-' . date() : '')  . '.sql', 'a');
 
 $NPC_NAME        = "";  // Save the last iterated NPC name
 $NPC_ID          = 0;   // And its entry in the table.
@@ -73,6 +69,6 @@ ob_end_flush();
 
 foreach ($npcStore as $npcId => $npcObj) {
     $npcObj->convertAllToSAI();
-    echo $npcObj->toSQL();
-    die;
+	fwrite($sqlOutputSAIs, $npcObj->toSQL());
 }
+fclose($sqlOutputSAIs); 

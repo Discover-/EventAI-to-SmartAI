@@ -1,12 +1,8 @@
 <?php
 
-$host = 'localhost';
-$dbName = '335_world';
-$username = 'root';
-$password = '';
-$withDate = false; // Append date to filename ?
-
-require_once('./utils.php');
+define('CURRENT_PATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
+require_once(CURRENT_PATH.'config.php');
+require_once(CURRENT_PATH.'utils.php');
 
 try {
     $pdoOptions[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;

@@ -1,7 +1,9 @@
 <?php
-require_once('./sqlbuilder.class.php');
-require_once('./eai.def.php');
-require_once('./sai.def.php');
+if (!defined('CURRENT_PATH'))
+	return;
+require_once(CURRENT_PATH.'sqlbuilder.class.php');
+require_once(CURRENT_PATH.'eai.def.php');
+require_once(CURRENT_PATH.'sai.def.php');
 
 define('__FIXME__',  -1);
 

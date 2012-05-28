@@ -1,5 +1,6 @@
 <?php
-
+if (!defined('CURRENT_PATH'))
+	return;
 class NPC
 {
     public function __construct($pdo, $npcId) { $this->pdo = $pdo; $this->npcId = $npcId; }
