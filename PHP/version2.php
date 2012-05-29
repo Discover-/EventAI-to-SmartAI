@@ -18,10 +18,9 @@ require_once(CURRENT_PATH.'config.php');
 require_once(CURRENT_PATH.'utils.php');
 
 try {
-    $pdoOptions[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
     $pdo = new PDO('mysql:host=' . $host . ';dbname=' . $dbName, $username, $password, $pdoOptions);
 } catch (Exception $e) {
-    die("Error while connecting to the database. Message sent by PDO: " . $e->getMessage());
+    die("Error while connecting to the database. Message sent by PDO: " . $e->getMessage().PHP_EOL);
 }
 
 ob_start();

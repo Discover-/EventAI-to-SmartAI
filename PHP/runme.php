@@ -5,10 +5,9 @@ require_once(CURRENT_PATH.'config.php');
 require_once(CURRENT_PATH.'utils.php');
 
 try {
-    $pdoOptions[PDO::ATTR_ERRMODE] = PDO::ERRMODE_EXCEPTION;
     $pdo = new PDO('mysql:host=' . $host . ';dbname=' . $dbName, $username, $password, $pdoOptions);
 } catch (Exception $e) {
-    die("Error while connecting to the database. Message sent by PDO: " . $e->getMessage());
+    die("Error while connecting to the database. Message sent by PDO: " . $e->getMessage().PHP_EOL);
 }
 
 # Debug - limit to 50 for developping purposes
@@ -16,7 +15,7 @@ $EAIDataSet = $pdo->query("SELECT * FROM creature_ai_scripts ORDER BY id LIMIT 5
 
 # Create files
 $sqlOutputSAIs = fopen('./eai2sai' . ($withDate ? '-' . date() : '')  . '.sql', 'a');
-$textsOutput   = fopen('./eai2saiTexts-' . ($withDate ? '-' . date() : '')  . '.sql', 'a');
+$textsOutput   = fopen('./eai2saiTexts' . ($withDate ? '-' . date() : '')  . '.sql', 'a');
 
 writeToFile($textsOutput, "-- Deleting all entries from creature_ai_texts");
 writeToFile($textsOutput, "TRUNCATE TABLE `creature_ai_texts`;");
