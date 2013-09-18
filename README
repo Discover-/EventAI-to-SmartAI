@@ -7,11 +7,14 @@ will output UPDATE, INSERT, DELETE and TRUNCATE queries to *.sql files.
 
 HOW-TO-USE
 
-Head into the directory where you installed that script. Open `config.ini` with your
-favorite file editor and change your database settings accordingly to what is needed
-for the script to run on your database. Save the file, and close your editor.
+Head into the directory where you installed that script. Go to the 'Build' directory
+and copy the `config.ini` file from that directory to the PHP directory. Open the file
+with your favorite file editor and change your database settings accordingly to what
+is needed for the script to run on your database. Save the file, and close your editor.
 
-Add a directory called `dbcs` in the directory `dep` and parse a spell.dbc file there.
+Add a directory called `dbcs` in the directory `dep` and parse a Spell.dbc file there.
+The Spell.dbc file must be English (at least that what it looks like), else spell names
+are not printed correctly (at all).
 
 Linuxers: Make sure you have PHP installed, and that you have the PDO library as well.
 If you don't know how to install it, get a tour on PHP's online documentation.
@@ -19,14 +22,21 @@ If you don't know how to install it, get a tour on PHP's online documentation.
 Windowsers: That's pretty much the same, except you'll have to add the directory where
 your PHP.exe relies to your PATH environment variable. Ask Google for more informations,
 there are plenty of places where you can learn what this is. Once you're about to issue
-the 'php version2.php' command, your cmd must be in the directory where the version2.php
-file is, else you'll get a fatal error.
+the 'php runme.php' command, your cmd must be in the directory where the runme.php file
+is, else you'll get a fatal error.
 
 From now, things are pretty straigtforward. Head to the directory where you downloaded
-the source, and issue the `php version2.php` command. The script will start and work on
+the source, and issue the `php runme.php` command. The script will start and work on
 its own. Go get a cofee, and when you're back you'll notice two *.sql files in the
 directoy. These are the files you have to apply to your world database to be able to
 effectively wipe EventAI from your database, and thus from the core!
+
+Thanks to:
+Warpten, Discover-, Horn
+
+As for the older project (where we were converting them by hand), thanks to the following people:
+Warpten, Discover-, Horn, Kandera, Valvorb, ZxBiohazardZx
+
 
 Thanks for reading
 The EAI2SAI PHP Developer (Aka ME, narcissism at its peak)
